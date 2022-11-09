@@ -1,0 +1,34 @@
+﻿#pagewrapper
+{
+    border-style: hidden;
+    margin: auto;
+    width: 1170px;
+    height: 650px;
+    background-color: #008000;
+}
+
+#Header
+{
+    width: 1170px;
+    height: 95px;
+    background-image: url('masterheader.jpg');
+    font-family: 'Times New Roman' , Times, serif;
+    font-size: Medium;
+}
+
+#Sidebar
+{
+    width: 170px;
+    height: 555px;
+    float: left;
+    background-color: #DEF8AD;
+}
+
+
+#Contentplace
+{
+    width: 1000px;
+    height: 555px;
+    float: left;
+    background-color: #EFFCD8;
+}

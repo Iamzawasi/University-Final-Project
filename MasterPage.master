@@ -1,0 +1,285 @@
+﻿<%@ Master Language="VB" CodeFile="MasterPage.master.vb" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<script type="text/javascript">
+    
+    function SetTarget() {
+
+        document.forms[0].target = "_blank";
+
+    }
+/* function isNumber(event) {
+  if (event) {
+    var charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode != 190 && charCode > 31 && 
+       (charCode < 48 || charCode > 57) && 
+       (charCode < 96 || charCode > 105) && 
+       (charCode < 37 || charCode > 40) && 
+        charCode != 110 && charCode != 8 && charCode != 46 )
+       return false;
+  }
+  return true;
+}
+*/
+    function validate(isField) {
+
+        splitDate = isField.value.split("/");
+        refDate = new Date(isField.value);
+        if (splitDate[0] < 1 || splitDate[0] > 12 || refDate.getDate() != splitDate[1] || splitDate[2].length != 4 || (!/^19|20/.test(splitDate[2]))) {
+            alert('Invalid date');
+            isField.value = "";
+            isField.focus();
+        }
+    }
+    function isNumber(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode != 45 && charCode != 8 && charCode != 9 && (charCode < 48 || charCode > 57)) {  
+                return false;
+            }
+
+            return true;
+    }
+    
+    function isonlyNumber(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode != 24 && charCode != 8 && charCode != 9 && charCode != 39 && charCode != 37 && charCode != 127 && (charCode < 48 || charCode > 57)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    function isparticularNumber(evt) { // THIS IS FOR PARTICULAR AND ADDREESS
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode != 8 && charCode != 9 && charCode != 39 && charCode != 37 && charCode != 32 && charCode != 43 && charCode != 58 && charCode != 48 && charCode != 49 && charCode != 50 && charCode != 51 && charCode != 52 && charCode != 53 && charCode != 54 && charCode != 55 && charCode != 56 && charCode != 57 && (charCode < 64 || charCode > 127)) {
+            return false;
+        }
+
+        return true;
+    }
+    function isonlyName(evt) { // THIS FUNCTION IS FOR  NAME TEXTBOXES ONLY
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode != 32 && charCode != 8 && charCode != 9 && charCode != 39 && charCode != 37 && charCode != 127 && (charCode < 65 || charCode > 122)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    function amount(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode != 32 && charCode != 46 && charCode != 8 && charCode != 9 && charCode != 39 && charCode != 37 && charCode != 127 && (charCode < 48 || charCode > 57)) {  
+        
+                return false;
+            }
+
+            return true;
+    }
+
+  /*  
+    
+    
+   
+
+    function validate(s) {
+        var rgx = /^[0-9]*\.?[0-9]*$/;
+        return s.matches(rgx);
+    }
+    */
+</script>
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="Masterpage.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .style1
+        {
+            width: 98%;
+            height: 58px;
+        }
+        .style4
+        {
+            width: 571px;
+            height: 10px;
+        }
+        .style5
+        {
+            height: 51px;
+            width: 3046px;
+        }
+        .style6
+        {
+            width: 3046px;
+            font-weight: bold;
+            height: 10px;
+        }
+        .style7
+        {
+            height: 51px;
+            width: 236px;
+        }
+        .style8
+        {
+            width: 236px;
+            height: 10px;
+        }
+        .style9
+        {
+            height: 51px;
+            width: 1302px;
+        }
+        .style10
+        {
+            width: 1302px;
+            font-weight: bold;
+            height: 10px;
+        }
+        .style11
+        {
+            height: 51px;
+            width: 1562px;
+            font-size: x-large;
+        }
+        .style12
+        {
+            width: 1562px;
+            font-weight: bold;
+            height: 10px;
+        }
+        .style13
+        {
+            width: 92px;
+            height: 10px;
+        }
+        .style14
+        {
+            width: 571px;
+            height: 51px;
+        }
+        .style15
+        {
+            width: 92px;
+            height: 51px;
+        }
+        .style16
+        {
+            color: #000000;
+        }
+    </style>
+    </head>
+<body >
+    <form id="form1" runat="server">
+    <div id="pagewrapper">
+        <div id="Header">   
+            <table class="style1">
+                <tr>
+                    <td class="style5">
+                    </td>
+                    <td class="style11">
+                        <strong>Welcome:
+                        <asp:Label ID="UserNamelbl" runat="server"></asp:Label>
+                        </strong>
+                    </td>
+                    <td class="style9">
+                    </td>
+                    <td class="style7">
+                    </td>
+                    <td class="style14">
+                        &nbsp;</td>
+                    <td class="style15">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="style6">
+                        </td>
+                    <td class="style12">
+                        <asp:Label ID="Lastloginlbl" runat="server" style="font-size: small" 
+                            Text="Login time:-"></asp:Label>
+                        <asp:Label ID="lstlginlbl" runat="server" style="font-size: small"></asp:Label>
+                        </td>
+                    <td class="style10">
+                        </td>
+                    <td class="style8">
+                        <a href="welcome.aspx"><strong><span class="style16">Home</span></strong></a></td>
+                    <td class="style4">
+                        <strong><a href="Changepassword.aspx"><span class="style16">Change Password</span></a></strong></td>
+                    <td class="style13">
+                        <b>&nbsp;</b><asp:LinkButton ID="Logut" runat="server" 
+                            style="font-weight: 700; color: #000000">Logout</asp:LinkButton>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="Sidebar">
+            <asp:Panel ID="Panel1" runat="server" Height="153px" Width="144px">
+                <strong>&nbsp;Navigation Menu </strong>
+                <asp:TreeView ID="TreeView1" runat="server" AutoGenerateDataBindings="False" 
+                    ImageSet="Arrows" ViewStateMode="Enabled">
+                    <HoverNodeStyle Font-Underline="True" ForeColor="#5555DD" />
+                    <Nodes>
+                        <asp:TreeNode Expanded="False" SelectAction="Expand" Text="Customer" 
+                            Value="Customer">
+                            <asp:TreeNode Text="New Customer" Value="New Customer" 
+                                NavigateUrl="~/Customer.aspx"></asp:TreeNode>
+                            <asp:TreeNode Text="Correction" Value="Correction" 
+                                NavigateUrl="~/Custcorrecton.aspx"></asp:TreeNode>
+                        </asp:TreeNode>
+                        <asp:TreeNode Expanded="False" SelectAction="Expand" Text="Account" 
+                            Value="Account">
+                            <asp:TreeNode Text="New Account" Value="newaccount" 
+                                NavigateUrl="~/NewAccount.aspx"></asp:TreeNode>
+                        </asp:TreeNode>
+                        <asp:TreeNode Expanded="False" SelectAction="Expand" Text="Transaction" 
+                            Value="Transaction">
+                            <asp:TreeNode Text="Deposit" Value="trandeposit" 
+                                NavigateUrl="~/Deposit.aspx"></asp:TreeNode>
+                            <asp:TreeNode Text="Withdrawal" Value="transwith" 
+                                NavigateUrl="~/Withdrawal.aspx"></asp:TreeNode>
+                            <asp:TreeNode Text="Transfer/Exchange" Value="trantransexch" 
+                                NavigateUrl="~/TransferExchange.aspx"></asp:TreeNode>
+                        </asp:TreeNode>
+                        <asp:TreeNode Expanded="False" SelectAction="Expand" Text="Statement" 
+                            Value="Statement">
+                            <asp:TreeNode Text="Specific Date" Value="statspecificdate" 
+                                NavigateUrl="~/SpecificMonthStatment.aspx"></asp:TreeNode>
+                            <asp:TreeNode Text="Current Month" Value="statcurrentmonth" 
+                                NavigateUrl="~/Currentmonthstatment.aspx"></asp:TreeNode>
+                        </asp:TreeNode>
+                        <asp:TreeNode Expanded="False" SelectAction="Expand" Text="Record" 
+                            Value="Record">
+                            <asp:TreeNode Text="Voucher Reprint" Value="recvouch" 
+                                NavigateUrl="~/vouchereprint.aspx"></asp:TreeNode>
+                            <asp:TreeNode Text="Account Details" Value="acdetails" 
+                                NavigateUrl="~/AccountDetails2.aspx"></asp:TreeNode>
+                        </asp:TreeNode>
+                        <asp:TreeNode Expanded="False" SelectAction="Expand" Text="Report" 
+                            Value="partidrep">
+                            <asp:TreeNode Text="Overall Report" Value="reppartdatetrfd" 
+                                NavigateUrl="~/OverallReport.aspx"></asp:TreeNode>
+                        </asp:TreeNode>
+                    </Nodes>
+                    <NodeStyle Font-Names="Tahoma" Font-Size="10pt" ForeColor="Black" 
+                        HorizontalPadding="5px" NodeSpacing="0px" VerticalPadding="0px" />
+                    <ParentNodeStyle Font-Bold="False" />
+                    <SelectedNodeStyle Font-Underline="True" ForeColor="#5555DD" 
+                        HorizontalPadding="0px" VerticalPadding="0px" />
+                </asp:TreeView>
+            </asp:Panel>
+        </div>
+        <div id="Contentplace">
+            <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+                <p>&nbsp;</p>
+            </asp:ContentPlaceHolder>
+        </div>
+    </div>
+    </form>
+</body>
+</html>

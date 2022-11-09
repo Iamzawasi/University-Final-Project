@@ -1,0 +1,28 @@
+﻿#Pagewrapper
+{
+    border-style: hidden;
+    margin: auto;
+    width: 1170px;
+    height: 615px;
+}
+#Menu
+{
+    width: 1170px;
+    height: 100px;
+    background-image: url('header_afghanistan.jpg');
+}
+
+#MainContent
+{
+    width: 1170px;
+    height: 480px;
+    background-image: url('contentpic.jpg');
+}   
+
+#footer
+{
+    width: 1170px;
+    height: 20px;
+    clear: both;
+    background-image: url('footerloginpage.jpg');
+}
